@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+	<!-- величины которые можно и (иногда) нужно менять:
+n
+tilelist N
+widgh
+height-->
+
+	<p>Image to use:</p>
+	<img id="Tile0" width="100" height="100" src="img/0.png" alt="Tile1">
+	<img id="Tile1" width="100" height="100" src="img/1.png" alt="Tile2">
+	<img id="Tile2" width="100" height="100" src="img/2.png" alt="The Scream">
+	<img id="Tile3" width="100" height="100" src="img/3.png" alt="The Scream">
+	<img id="Tile4" width="100" height="100" src="img/4.png" alt="The Scream">
+	<img id="Tile5" width="100" height="100" src="img/5.png" alt="The Scream">
+	<img id="Tile6" width="100" height="100" src="img/6.png" alt="The Scream">
+	<img id="Tile7" width="100" height="100" src="img/7.png" alt="The Scream">
+	<img id="Tile8" width="100" height="100" src="img/8.png" alt="The Scream">
+	<img id="Tile9" width="100" height="100" src="img/9.png" alt="The Scream">
+	<img id="Tile10" width="100" height="100" src="img/10.png" alt="The Scream">
+	<img id="Tile11" width="100" height="100" src="img/11.png" alt="The Scream">
+	<br>
+	<img id="Tile12" width="100" height="100" src="img/12.png" alt="The Scream">
+	<img id="Tile13" width="100" height="100" src="img/13.png" alt="The Scream">
+	<img id="Tile14" width="100" height="100" src="img/14.png" alt="The Scream">
+	<img id="Tile15" width="100" height="100" src="img/15.png" alt="The Scream">
+	<img id="Tile16" width="100" height="100" src="img/16.png" alt="The Scream">
+	<img id="Tile17" width="100" height="100" src="img/17.png" alt="The Scream">
+	<img id="Tile18" width="100" height="100" src="img/18.png" alt="The Scream">
+	<img id="Tile19" width="100" height="100" src="img/19.png" alt="The Scream">
+	<img id="Tile20" width="100" height="100" src="img/20.png" alt="The Scream">
+	<img id="Tile21" width="100" height="100" src="img/21.png" alt="The Scream">
+	<img id="Tile22" width="100" height="100" src="img/22.png" alt="The Scream">
+	<img id="Tile23" width="100" height="100" src="img/23.png" alt="The Scream">
+	<br>
+	<img id="Tile24" width="100" height="100" src="img/24.png" alt="The Scream">
+	<img id="Tile25" width="100" height="100" src="img/25.png" alt="The Scream">
+	<img id="Tile26" width="100" height="100" src="img/26.png" alt="The Scream">
+	<img id="Tile27" width="100" height="100" src="img/27.png" alt="The Scream">
+	<img id="Tile28" width="100" height="100" src="img/28.png" alt="The Scream">
+	<img id="Tile29" width="100" height="100" src="img/29.png" alt="The Scream">
+	<img id="Tile30" width="100" height="100" src="img/30.png" alt="The Scream">
+	<img id="Tile31" width="100" height="100" src="img/31.png" alt="The Scream">
+	<br>
+	<p>Big button (click once please):</p>
+
+	<button type="button" style="height:70px;width:200px" onclick="DrawImage()">Click to draw</button>
+
+	<p>Canvas:</p>
+	<!-- working width/height -- 225/900000 -->
+	<canvas id="myCanvas" width="1600" height="40000";">Your browser does not support the HTML5 canvas tag.
+	</canvas>
+
+
+	<script src="miniqs_side-6.js"></script>
+
+
+	<script>
+		var n = 6;
+		var columns = 2;
+		var scale = 3;
+		var i = 0;
+		var spacey = 0;
+		var spacex = 0;
+
+
+		// src="tilelist.js"
+		//src = "tilelist"+n.toString()+".js"
+
+		function DrawImage() {
+
+			for (i = 0; i < 31320; i++) {
+				if ((i % (columns * n * n) == 0) && (i > 0)) {
+					spacey += n * 200 / scale
+				}
+				if ((i % (n * n) == 0) && (i > 0)) {
+					spacex += n * 200 / scale
+				}
+				if ((i % (columns * n * n) == 0) && (i > 0)) {
+					spacex = 0
+				}
+				var xcoord = spacex + 165 * (i % n) / scale;
+				var ycoord = spacey + 165 * (~~((i % (n * n)) / n)) / scale;
+
+
+				var c = document.getElementById("myCanvas");
+				var ctx = c.getContext("2d");
+				var img = document.getElementById("Tile" + tilelist[i].toString());
+				ctx.drawImage(img, xcoord, ycoord, 200 / scale, 200 / scale);
+			}
+
+			//	console.log(tilelist[i]);
+			//	var width = img.clientWidth;
+			//	var height = img.clientHeight;
+			//	console.log(height);
+			//	console.log(width);
+
+		}
+	</script>
+</body>
+
+</html>
