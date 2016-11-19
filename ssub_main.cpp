@@ -114,10 +114,10 @@ int main()
             }
         }
         std::cout << "printing" << std::endl;
-        // printMatrix(out_matrix);
+        printMatrix(out_matrix);
         std::cout << "add to file" << std::endl;
         addMatrixToFile(out_matrix, outputfile);
-				write_2dvector_to_js(out_matrix, name);
+				// write_2dvector_to_js(out_matrix, name);
 
         for (int i = 0; i < m; i++)
         {
